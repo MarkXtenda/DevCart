@@ -1,0 +1,47 @@
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 10px;
+  cursor: pointer
+}
+
+nav ul li button:hover {
+background-color: #ddd;
+}
+
+button {
+background-color: #333;
+color: #fff;
+border: none;
+padding: 10px;
+cursor: pointer;
+}
+
+button:hover {
+background-color: #555;
+}
+
+footer {
+background-color: #333;
+color: #fff;
+padding: 10px;
+text-align: center;
+}
