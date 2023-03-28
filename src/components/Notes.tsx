@@ -11,18 +11,17 @@ interface ProgramingLanguage {
 type Props = {
   notesArray : Array<ProgramingLanguage>,
   cart : string[],
-  removeFromCart: (note: string) => void,
-  addToCart: (note: string) => void;
+  handleCart : (notes: string) => void;
 };
 
-const Notes: React.FC<Props> = ({notesArray, cart, removeFromCart, addToCart }) => {
+const Notes: React.FC<Props> = ({notesArray, cart, handleCart }) => {
 
   return (
 
     <div>
       <h1>Programming Language Notes</h1>
       {notesArray.map((note, index)=> 
-          <Note key={index} name={note.name} cart={cart} removeFromCart={removeFromCart}  addToCart={addToCart} />
+          <Note key={index} name={note.name} cart={cart} handleCart={handleCart} />
       )}
     </div>
   );

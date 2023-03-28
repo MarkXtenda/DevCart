@@ -36,21 +36,25 @@ function App() {
   };
 
   const addToCart = (note: string) => {
-    // Possibly can fit alert that user cant add more than one note to the cart
-    (cart.some((item) => item === note)) ? cart : setCart([...cart, note])
+    setCart([...cart, note])
   };
 
   const removeFromCart = (note: string) => {
     setCart(cart.filter((item) => item !== note));
   };
 
+  const handleCart = (note: string) => {
+    if (cart.some((item) => item === note)) { removeFromCart(note) }
+    else { addToCart(note); }
+  }
+
   return (
     <Router>
       <Header cartLength={cart.length} loggedIn={loggedIn} handleLogout={handleLogout} />
       <Routes>
-        <Route path='/' element={<Home notesArray={notesArray} cart={cart} removeFromCart={removeFromCart} addToCart={addToCart}/>}></Route>
+        <Route path='/' element={<Home notesArray={notesArray} cart={cart} handleCart={handleCart}/>}></Route>
         <Route path='/login' element={<Login handleLogin={handleLogin} />}></Route>
-        <Route path='/notes' element={<Notes notesArray={notesArray} cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />}></Route>
+        <Route path='/notes' element={<Notes notesArray={notesArray} cart={cart} handleCart={handleCart} />}></Route>
         <Route path='/cart' element={<ShoppingCart cart={cart} removeFromCart={removeFromCart} />}></Route>
         <Route path='/notes/:name' element={<NotePage addToCart={addToCart}/>}/>
       </Routes>

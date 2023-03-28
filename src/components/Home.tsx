@@ -15,11 +15,10 @@ interface ProgramingLanguage {
 type Props = {
   notesArray : Array<ProgramingLanguage>,
   cart : string[],
-  removeFromCart: (note: string) => void,
-  addToCart : (note: string) => void;
+  handleCart : (notes: string) => void;
 }
 
-const Home: React.FC<Props> = ({notesArray, cart, removeFromCart, addToCart}) => {
+const Home: React.FC<Props> = ({notesArray, cart, handleCart}) => {
   return (
     <div>
       <h1>Welcome to the e-commerce website for programming language notes</h1>
@@ -28,11 +27,15 @@ const Home: React.FC<Props> = ({notesArray, cart, removeFromCart, addToCart}) =>
         them to your shopping cart.
       </p>
       <h2>{Categories.frontEnd}</h2>
-      {notesArray.filter((note)=>note.category === Categories.frontEnd).map((note, index) => (
-          <Note key={index} name={note.name} cart={cart} removeFromCart={removeFromCart} addToCart={addToCart} />))}
+      <section className='notes-section'>
+        {notesArray.filter((note)=>note.category === Categories.frontEnd)
+        .map((note, index) => (<Note key={index} name={note.name} cart={cart} handleCart={handleCart} />))}
+      </section>
       <h2>{Categories.backEnd}</h2>
-      {notesArray.filter((note)=>note.category === Categories.backEnd).map((note, index) => (
-          <Note key={index} name={note.name}  cart={cart} removeFromCart={removeFromCart}  addToCart={addToCart} />))}
+      <section className='notes-section'>
+        {notesArray.filter((note)=>note.category === Categories.backEnd)
+        .map((note, index) => (<Note key={index} name={note.name}  cart={cart} handleCart={handleCart} />))}
+      </section>
     </div>
   );
 };
